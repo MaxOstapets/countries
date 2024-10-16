@@ -4,6 +4,7 @@ import Menu from "../../Components/Menu";
 import Card from "../../Components/Card";
 import { CountriesContext } from "../../Provider/Countries";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 const Main = () => {
     const context = useContext(CountriesContext);
@@ -34,14 +35,16 @@ const Main = () => {
 
             <section className="grid grid-cols-4 justify-items-center gap-1 mx-auto">
                 {data?.map((el: any) => (
-                    <Card
-                        key={el.name}
-                        name={el.name}
-                        population={el.population}
-                        region={el.region}
-                        capital={el.capital}
-                        flags={el.flags.svg}
-                    />
+                    <Link to={`${el.name}`}>
+                        <Card
+                            key={el.name}
+                            name={el.name}
+                            population={el.population}
+                            region={el.region}
+                            capital={el.capital}
+                            flag={el.flag}
+                        />
+                    </Link>
                 ))}
             </section>
         </>
